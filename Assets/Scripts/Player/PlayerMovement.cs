@@ -57,8 +57,6 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
-
-        Debug.Log(readyToJump);
     }
 
     private void FixedUpdate()
