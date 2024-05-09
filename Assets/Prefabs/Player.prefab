@@ -332,6 +332,7 @@ MonoBehaviour:
     m_Bits: 64
   playerOrientation: {fileID: 3141808724422828314}
   rb: {fileID: 97700077590020923}
+  playerCam: {fileID: 582704054400384677}
   jumpKej: 32
 --- !u!114 &1583164619026996213
 MonoBehaviour:

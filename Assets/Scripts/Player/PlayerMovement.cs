@@ -24,6 +24,7 @@ public class PlayerMovement : NetworkBehaviour
     [Header("References")]
     public Transform playerOrientation;
     public Rigidbody rb;
+    public Camera playerCam;
 
     [Header("Key Bindings")]
     public KeyCode jumpKej = KeyCode.Space;
@@ -37,7 +38,11 @@ public class PlayerMovement : NetworkBehaviour
     private void Start()
     {
         //Network ownership check
-        if(!IsOwner) return;
+        if (!IsOwner)
+        {
+            playerCam.gameObject.SetActive(false);
+            return;
+        }
 
         //Get rb refference and freez its rotation
         rb = GetComponent<Rigidbody>();
