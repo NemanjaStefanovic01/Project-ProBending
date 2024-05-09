@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     [Header("Movement variables")]
     public float moveSpeed;
@@ -35,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        //Network ownership check
+        if(!IsOwner) return;
+
         //Get rb refference and freez its rotation
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -45,6 +49,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        //Network ownership check
+        if (!IsOwner) return;
+
         //Ground check
         grounded = Physics.Raycast(new Vector3(transform.position.x, transform.position.y + playerHeight * 0.5f, transform.position.z), 
                                    Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
@@ -61,6 +68,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Network ownership check
+        if (!IsOwner) return;
+
+
         MovePlayer();
     }
 

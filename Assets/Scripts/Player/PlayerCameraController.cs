@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerCameraController : MonoBehaviour
+public class PlayerCameraController : NetworkBehaviour
 {
     [Header("Variables")]
     [Range(0.5f, 10f)]
@@ -18,6 +20,9 @@ public class PlayerCameraController : MonoBehaviour
 
     private void Start()
     {
+        //Network ownership check
+        if (!IsOwner) return;
+
         //Lock and hide the cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -25,6 +30,9 @@ public class PlayerCameraController : MonoBehaviour
 
     private void Update()
     {
+        //Network ownership check
+        if (!IsOwner) return;
+
         //Get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSensitivity*sensMultiplayer;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSensitivity*sensMultiplayer;
