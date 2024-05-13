@@ -10,7 +10,7 @@ public class PlayerMovement : NetworkBehaviour
     public float moveSpeed;
     public float groundDrag;
 
-    
+    //jump
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
@@ -132,7 +132,6 @@ public class PlayerMovement : NetworkBehaviour
     {
         readyToJump = true;
     }
-
 
     //private void OnDrawGizmos()
     //{
