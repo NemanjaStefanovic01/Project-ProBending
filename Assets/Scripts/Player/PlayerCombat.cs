@@ -5,10 +5,10 @@ using Unity.Netcode;
 
 public class PlayerCombat : NetworkBehaviour
 {
-    [Header("Elemental Abilities")] //Zasto ovaj header ne radi haha
     Transform earthWall;
     Transform earthBall;
-    //prefabs
+    
+    [Header("Elemental Abilities")]
     [SerializeField]
     Transform earthWallPrefab;
     [SerializeField]
@@ -37,8 +37,6 @@ public class PlayerCombat : NetworkBehaviour
         {
             Destroy(earthWall.gameObject);
             earthWall.GetComponent<NetworkObject>().Despawn(true); //Despawn it from network
-
-            //Za abilitije u NetworkObject od komponente moram otkacitiDont Destroy With Owner jer ako owner izadje unisti ce objekat
         }
     }
 

@@ -17,14 +17,24 @@ public class NetworkManagerUI : MonoBehaviour
         serverBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartServer();
+            DisableButtons();
         });
         hostBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartHost();
+            DisableButtons();
         });
         clientBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartClient();
+            DisableButtons();
         });
+    }
+
+    void DisableButtons()
+    {
+        serverBtn.enabled = false;
+        hostBtn.enabled = false;
+        clientBtn.enabled = false;
     }
 }
