@@ -50,6 +50,14 @@ public class PlayerMovement : NetworkBehaviour
 
         //Get pleyer orientatnion reference
         playerOrientation = this.transform.Find("orientation");
+
+        //OVO CES POSLE PREMESTITIT ODAVDE
+        //Montiranje UI-a kada player udje
+        GameObject canvas = GameObject.Find("Canvas");
+        Transform networkMan = canvas.transform.Find("NetworkManagerUI");
+        Transform playerUI = canvas.transform.Find("PlayerUI");
+        networkMan.gameObject.SetActive(false);
+        playerUI.gameObject.SetActive(true);
     }
 
     private void Update()

@@ -444,6 +444,8 @@ MonoBehaviour:
   earthWallPrefab: {fileID: 3189812518456263560, guid: 809cd635a81ec3a47960d2b0e3b01046, type: 3}
   earthBallPrefab: {fileID: 3580807573375673900, guid: 5773b991a63b47946b16769c7170e9d3, type: 3}
   abilitySpawnPos: {fileID: 7685835204213936096}
+  cam: {fileID: 582704054400384677}
+  raycastRange: 2
 --- !u!1 &6567128096820419221
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +458,7 @@ GameObject:
   - component: {fileID: 582704054400384677}
   - component: {fileID: 7070774369622289841}
   - component: {fileID: 2709113464192181655}
+  - component: {fileID: 3828240686300154180}
   m_Layer: 0
   m_Name: playerCam
   m_TagString: Untagged
@@ -552,6 +555,37 @@ MonoBehaviour:
   mouseSensitivity: 3.5
   playerOrientation: {fileID: 3141808724422828314}
   playerObject: {fileID: 3815699589924955694}
+--- !u!114 &3828240686300154180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567128096820419221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.01
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &8432894963463383831
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,22 +18,31 @@ public class PlayerCombat : NetworkBehaviour
     [SerializeField]
     Transform abilitySpawnPos;
     [SerializeField]
+    Camera cam;
+
+    [Header("Shooting Abbilities")]
+    public float raycastRange;
 
     private void Update()
     {
         if(!IsOwner) return;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q)) //Wall
         {
             SpawnObjectServerRPC(1);
 
-        } else if (Input.GetKeyDown(KeyCode.E))
+        } else if (Input.GetKeyDown(KeyCode.E)) //Ball
         {
             SpawnObjectServerRPC(2);
+
+        } else if (Input.GetMouseButtonDown(0)) //Punch
+        {
+            PunchAbbilityServerRpc();
+
         }
 
         //Ukoliko zelim da despawnujem nesto
-        if(Input.GetKeyDown(KeyCode.X)) 
+        if (Input.GetKeyDown(KeyCode.X)) 
         {
             Destroy(earthWall.gameObject);
             earthWall.GetComponent<NetworkObject>().Despawn(true); //Despawn it from network
@@ -57,5 +66,20 @@ public class PlayerCombat : NetworkBehaviour
             default: break;
         }
         
+    }
+
+    [ServerRpc]
+    private void PunchAbbilityServerRpc()
+    {
+        Vector3 origin = cam.transform.position;
+        Vector3 direction = cam.transform.forward;
+
+        Ray ray = new Ray(origin, direction);
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, raycastRange))
+        {
+            Debug.Log("Hit object: " + hit.collider.name);
+        }
     }
 }
