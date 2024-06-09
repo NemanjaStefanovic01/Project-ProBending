@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 97700077590020923}
   - component: {fileID: 437426988185065381}
   - component: {fileID: 1583164619026996213}
+  - component: {fileID: 7361285204607445190}
   - component: {fileID: 869672564129857870}
   - component: {fileID: 1292369510572380054}
   m_Layer: 0
@@ -389,9 +390,9 @@ MonoBehaviour:
   SyncPositionX: 1
   SyncPositionY: 1
   SyncPositionZ: 1
-  SyncRotAngleX: 0
+  SyncRotAngleX: 1
   SyncRotAngleY: 1
-  SyncRotAngleZ: 0
+  SyncRotAngleZ: 1
   SyncScaleX: 0
   SyncScaleY: 0
   SyncScaleZ: 0
@@ -404,6 +405,18 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &7361285204607445190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6377474263015697352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &869672564129857870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   earthWallPrefab: {fileID: 3189812518456263560, guid: 809cd635a81ec3a47960d2b0e3b01046, type: 3}
-  earthBallPrefab: {fileID: 3580807573375673900, guid: 5773b991a63b47946b16769c7170e9d3, type: 3}
+  earthBallPrefab: {fileID: 8119055621045474832, guid: 5773b991a63b47946b16769c7170e9d3, type: 3}
   abilitySpawnPos: {fileID: 7685835204213936096}
   cam: {fileID: 582704054400384677}
   raycastRange: 2

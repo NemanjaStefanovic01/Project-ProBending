@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using System;
 
 public class PlayerCombat : NetworkBehaviour
 {
@@ -37,8 +38,10 @@ public class PlayerCombat : NetworkBehaviour
 
         } else if (Input.GetMouseButtonDown(0)) //Punch
         {
-            PunchAbbilityServerRpc();
+            Vector3 orientation = GetLocalCameraOrientationAndDirection()[0];
+            Vector3 direction = GetLocalCameraOrientationAndDirection()[1];
 
+            PunchAbbilityServerRpc(orientation, direction);
         }
 
         //Ukoliko zelim da despawnujem nesto
@@ -47,6 +50,19 @@ public class PlayerCombat : NetworkBehaviour
             Destroy(earthWall.gameObject);
             earthWall.GetComponent<NetworkObject>().Despawn(true); //Despawn it from network
         }
+    }
+
+    List<Vector3> GetLocalCameraOrientationAndDirection()
+    {
+        List<Vector3> ret = new List<Vector3>();
+
+        Vector3 origin = cam.transform.position;
+        Vector3 direction = cam.transform.forward;
+
+        ret.Add(origin);
+        ret.Add(direction);
+
+        return ret;
     }
 
     [ServerRpc]
@@ -65,21 +81,20 @@ public class PlayerCombat : NetworkBehaviour
 
             default: break;
         }
-        
     }
 
     [ServerRpc]
-    private void PunchAbbilityServerRpc()
+    private void PunchAbbilityServerRpc(Vector3 origin, Vector3 direction)
     {
-        Vector3 origin = cam.transform.position;
-        Vector3 direction = cam.transform.forward;
+        Debug.DrawRay(origin, direction * raycastRange, Color.red, 2.0f);
 
         Ray ray = new Ray(origin, direction);
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, raycastRange))
         {
-            Debug.Log("Hit object: " + hit.collider.name);
+            //Debug.Log("Hit object: " + hit.collider.name);
+            hit.transform.GetComponent<IAbility>().OnPunch();
         }
     }
 }
