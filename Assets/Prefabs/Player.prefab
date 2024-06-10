@@ -456,6 +456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earthWallPrefab: {fileID: 3189812518456263560, guid: 809cd635a81ec3a47960d2b0e3b01046, type: 3}
   earthBallPrefab: {fileID: 8119055621045474832, guid: 5773b991a63b47946b16769c7170e9d3, type: 3}
+  earthMolePrefab: {fileID: 3116626921753638234, guid: 8f8561003d2e6d54c9b35d392cf1103c, type: 3}
   abilitySpawnPos: {fileID: 7685835204213936096}
   cam: {fileID: 582704054400384677}
   raycastRange: 2

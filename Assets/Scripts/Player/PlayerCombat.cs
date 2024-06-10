@@ -8,12 +8,15 @@ public class PlayerCombat : NetworkBehaviour
 {
     Transform earthWall;
     Transform earthBall;
+    Transform earthMole;
     
     [Header("Elemental Abilities")]
     [SerializeField]
     Transform earthWallPrefab;
     [SerializeField]
     Transform earthBallPrefab;
+    [SerializeField]
+    Transform earthMolePrefab;
 
     [Header("References")]
     [SerializeField]
@@ -35,6 +38,10 @@ public class PlayerCombat : NetworkBehaviour
         } else if (Input.GetKeyDown(KeyCode.E)) //Ball
         {
             SpawnObjectServerRPC(2);
+
+        }else if(Input.GetKeyDown(KeyCode.R)) //Mole
+        {
+            SpawnObjectServerRPC(3);
 
         } else if (Input.GetMouseButtonDown(0)) //Punch
         {
@@ -76,9 +83,13 @@ public class PlayerCombat : NetworkBehaviour
                 break;
             case 2:
                 earthBall = Instantiate(earthBallPrefab, abilitySpawnPos.position, abilitySpawnPos.rotation);
-                earthBall.GetComponent<NetworkObject>().Spawn(true); //Spawns it on network
+                earthBall.GetComponent<NetworkObject>().Spawn(true); 
                 break;
-
+            case 3:
+                Vector3 spawnPos = new Vector3(abilitySpawnPos.position.x, abilitySpawnPos.position.y + 0.2f, abilitySpawnPos.position.z);
+                earthMole = Instantiate(earthMolePrefab, spawnPos, abilitySpawnPos.rotation);
+                earthMole.GetComponent<NetworkObject>().Spawn(true); 
+                break;
             default: break;
         }
     }
@@ -94,7 +105,7 @@ public class PlayerCombat : NetworkBehaviour
         if(Physics.Raycast(ray, out hit, raycastRange))
         {
             //Debug.Log("Hit object: " + hit.collider.name);
-            hit.transform.GetComponent<IAbility>().OnPunch();
+            hit.transform.GetComponent<IAbility>().OnPunch(direction);
         }
     }
 }

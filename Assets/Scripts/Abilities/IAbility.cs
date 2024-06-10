@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAbility
 {
-    void OnPunch();
+    void OnPunch(Vector3 direction);
 }

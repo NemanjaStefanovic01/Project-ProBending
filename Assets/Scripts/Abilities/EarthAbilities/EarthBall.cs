@@ -7,8 +7,19 @@ public class EarthBall : MonoBehaviour, IAbility
     [Header("References")]
     public Rigidbody rb;
 
-    public void OnPunch()
+    [Header("Vars")]
+    public float startJumpForce;
+    public float punchForce;
+    public float upwardDirectionModifier;
+
+    private void Start()
     {
-        rb.velocity = Vector3.up * 10;
+        rb.AddForce(Vector3.up * startJumpForce, ForceMode.Impulse);
+    }
+
+    public void OnPunch(Vector3 direction)
+    {
+        Vector3 punchTrajectory = new Vector3(direction.x, direction.y + upwardDirectionModifier, direction.z);
+        rb.AddForce(punchTrajectory * punchForce, ForceMode.Impulse);
     }
 }

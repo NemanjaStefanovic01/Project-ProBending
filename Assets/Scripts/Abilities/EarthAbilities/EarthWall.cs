@@ -6,8 +6,14 @@ public class EarthWall : MonoBehaviour, IAbility
 {
     [Header("References")]
     public Rigidbody rb;
+    public Collider col;
 
-    public void OnPunch()
+    private void Start()
+    {
+        
+    }
+
+    public void OnPunch(Vector3 direction)
     {
         rb.velocity = Vector3.up * 10;
     }
