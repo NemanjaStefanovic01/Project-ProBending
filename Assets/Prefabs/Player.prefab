@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6513848804396645594}
   - component: {fileID: 3809142803815010700}
   - component: {fileID: 4325641950948516825}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: vizor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7685835204213936096}
   - component: {fileID: 8783701488686882827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: abilitySapwnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 7221063442796936569}
   - component: {fileID: 5874100925948044865}
   - component: {fileID: 181348661867204117}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: playerObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 7361285204607445190}
   - component: {fileID: 869672564129857870}
   - component: {fileID: 1292369510572380054}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 7070774369622289841}
   - component: {fileID: 2709113464192181655}
   - component: {fileID: 3828240686300154180}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: playerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3984829601966102258}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: camHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3141808724422828314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

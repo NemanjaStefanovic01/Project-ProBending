@@ -6,8 +6,9 @@ public class EarthWall : MonoBehaviour, IAbility
 {
     [Header("References")]
     public Rigidbody rb;
-    public Collider col;
 
+    [Header("Vars")]
+    public float punchForce;
     private void Start()
     {
         
@@ -15,6 +16,7 @@ public class EarthWall : MonoBehaviour, IAbility
 
     public void OnPunch(Vector3 direction)
     {
-        rb.velocity = Vector3.up * 10;
+        Vector3 punchTrajectory = new Vector3(direction.x, rb.velocity.y, direction.z);
+        rb.AddForce(punchTrajectory * punchForce, ForceMode.Impulse);
     }
 }

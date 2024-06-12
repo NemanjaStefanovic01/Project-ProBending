@@ -88,7 +88,8 @@ public class PlayerCombat : NetworkBehaviour
             case 3:
                 Vector3 spawnPos = new Vector3(abilitySpawnPos.position.x, abilitySpawnPos.position.y + 0.2f, abilitySpawnPos.position.z);
                 earthMole = Instantiate(earthMolePrefab, spawnPos, abilitySpawnPos.rotation);
-                earthMole.GetComponent<NetworkObject>().Spawn(true); 
+                earthMole.GetComponent<NetworkObject>().Spawn(true);
+                earthMole.GetComponent<EarthMole>().direction = GetLocalCameraOrientationAndDirection()[1];
                 break;
             default: break;
         }
@@ -108,4 +109,12 @@ public class PlayerCombat : NetworkBehaviour
             hit.transform.GetComponent<IAbility>().OnPunch(direction);
         }
     }
+
+    // Ovo ne radi zato sto nemogu da saljem Transform putem rpc-a
+
+    //[ServerRpc]
+    //private void SendDirectionToAbilityServerRpc(Transform obj, Vector3 dir)
+    //{
+    //    obj.GetComponent<EarthMole>().SetDirection(dir);
+    //}
 }

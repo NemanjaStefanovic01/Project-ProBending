@@ -141,11 +141,8 @@ public class PlayerMovement : NetworkBehaviour
         readyToJump = true;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red; // Set the color of the raycast
-
-    //    // Draw the raycast
-    //    Gizmos.DrawRay(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Vector3.down * (playerHeight * 0.5f + 0.2f));
-    //}
+    public void KnockupPlayer(float force)
+    {
+        rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+    }
 }
