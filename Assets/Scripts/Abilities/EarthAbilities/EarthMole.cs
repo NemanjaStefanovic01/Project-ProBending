@@ -33,7 +33,7 @@ public class EarthMole : MonoBehaviour, IAbility
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            other.gameObject.GetComponent<PlayerMovement>().KnockupPlayer(knockupForce);
+            other.gameObject.GetComponentInParent<PlayerMovement>().KnockupPlayer(knockupForce);
         }
     }
 }

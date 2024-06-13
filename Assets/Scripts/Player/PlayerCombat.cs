@@ -33,15 +33,15 @@ public class PlayerCombat : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q)) //Wall
         {
-            SpawnObjectServerRPC(1);
+            SpawnObjectServerRPC(1, GetLocalCameraOrientationAndDirection()[1]);
 
         } else if (Input.GetKeyDown(KeyCode.E)) //Ball
         {
-            SpawnObjectServerRPC(2);
+            SpawnObjectServerRPC(2, GetLocalCameraOrientationAndDirection()[1]);
 
         }else if(Input.GetKeyDown(KeyCode.R)) //Mole
         {
-            SpawnObjectServerRPC(3);
+            SpawnObjectServerRPC(3, GetLocalCameraOrientationAndDirection()[1]);
 
         } else if (Input.GetMouseButtonDown(0)) //Punch
         {
@@ -73,7 +73,7 @@ public class PlayerCombat : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void SpawnObjectServerRPC(int ability)
+    private void SpawnObjectServerRPC(int ability, Vector3 direction)
     {
         switch (ability)
         {
@@ -89,7 +89,7 @@ public class PlayerCombat : NetworkBehaviour
                 Vector3 spawnPos = new Vector3(abilitySpawnPos.position.x, abilitySpawnPos.position.y + 0.2f, abilitySpawnPos.position.z);
                 earthMole = Instantiate(earthMolePrefab, spawnPos, abilitySpawnPos.rotation);
                 earthMole.GetComponent<NetworkObject>().Spawn(true);
-                earthMole.GetComponent<EarthMole>().direction = GetLocalCameraOrientationAndDirection()[1];
+                earthMole.GetComponent<EarthMole>().direction = direction;
                 break;
             default: break;
         }
